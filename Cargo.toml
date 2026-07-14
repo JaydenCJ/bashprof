@@ -1,0 +1,18 @@
+[package]
+name = "bashprof"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+authors = ["JaydenCJ"]
+description = "A line-level time profiler for bash scripts: per-line self-time, call counts, annotated source, and flamegraph-ready collapsed stacks."
+license = "MIT"
+repository = "https://github.com/JaydenCJ/bashprof"
+keywords = ["bash", "profiler", "flamegraph", "shell", "xtrace"]
+categories = ["command-line-utilities", "development-tools::profiling"]
+
+[dependencies]
+# none — bashprof is std-only by design.
+
+[profile.release]
+strip = true
+lto = true

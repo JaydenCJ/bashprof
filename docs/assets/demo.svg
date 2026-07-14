@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1060" height="580" viewBox="0 0 1060 580" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15">
+  <!-- Terminal rendering of a real bashprof session (output captured from a
+       container run on 2026-07-13; timings are from that run). -->
+  <rect width="1060" height="580" rx="10" fill="#1c2128"/>
+  <rect width="1060" height="34" rx="10" fill="#2d333b"/>
+  <rect y="24" width="1060" height="10" fill="#2d333b"/>
+  <circle cx="20" cy="17" r="6" fill="#f47067"/>
+  <circle cx="40" cy="17" r="6" fill="#e0b543"/>
+  <circle cx="60" cy="17" r="6" fill="#57ab5a"/>
+  <text x="530" y="22" text-anchor="middle" fill="#909dab">bashprof — where does your bash spend its time?</text>
+
+  <g fill="#adbac7">
+    <text x="24" y="66"><tspan fill="#6cb6ff">$</tspan> bashprof run --top 6 ci-setup.sh</text>
+    <text x="24" y="92" fill="#768390">setup complete</text>
+    <text x="24" y="118">bashprof 0.1.0: ci-setup.sh (exit <tspan fill="#57ab5a">0</tspan>)</text>
+    <text x="24" y="144">total <tspan fill="#e0b543">726ms</tspan> wall, 118 commands traced, 1 source file</text>
+
+    <text x="24" y="188" fill="#909dab">     SELF       %   COUNT  LINE            COMMAND</text>
+    <text x="24" y="214"><tspan fill="#f47067">    366ms   50.4%</tspan>       3  ci-setup.sh:12  sleep 0.12</text>
+    <text x="24" y="240"><tspan fill="#e0b543">    352ms   48.5%</tspan>       1  ci-setup.sh:17  sleep 0.35</text>
+    <text x="24" y="266">    2.3ms    0.3%      51  ci-setup.sh:22  for i in $(seq 1 50)</text>
+    <text x="24" y="292">    2.1ms    0.3%       1  ci-setup.sh:33  echo 'setup complete'</text>
+    <text x="24" y="318">    1.5ms    0.2%       2  ci-setup.sh:27  CACHE_FILE=/tmp/tmp.AicKxHCxGt</text>
+    <text x="24" y="344">    967us    0.1%      50  ci-setup.sh:23  echo cache-entry-50</text>
+    <text x="24" y="370" fill="#768390">... 8 more lines; --top 0 shows all</text>
+
+    <text x="24" y="414" fill="#909dab">FUNCTIONS (self-time)</text>
+    <text x="24" y="440"><tspan fill="#f47067">    366ms   50.4%</tspan>       1x  fetch_deps</text>
+    <text x="24" y="466"><tspan fill="#e0b543">    352ms   48.5%</tspan>       1x  compile_assets</text>
+
+    <text x="24" y="510"><tspan fill="#6cb6ff">$</tspan> bashprof collapse ci.trace | sort -k2 -rn | head -2   <tspan fill="#768390"># two hottest stacks, flamegraph-ready</tspan></text>
+    <text x="24" y="536" fill="#96d0ff">main;fetch_deps;ci-setup.sh:12 366875</text>
+    <text x="24" y="562" fill="#96d0ff">main;compile_assets;ci-setup.sh:17 352110</text>
+  </g>
+</svg>
